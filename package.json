@@ -1,0 +1,19 @@
+{
+  "name": "edutrack",
+  "version": "1.0.0",
+  "description": "EduTrack — Student Management & Learning Portal",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "install-all": "npm install && npm install --prefix server && npm install --prefix client",
+    "seed": "npm run seed --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "nodemailer": "^9.0.5"
+  }
+}
