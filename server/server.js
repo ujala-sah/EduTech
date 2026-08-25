@@ -42,7 +42,11 @@ function isAllowedOrigin(origin) {
   if (allowlist.has(origin)) return true;
   try {
     const { hostname } = new URL(origin);
-    return hostname === 'pages.dev' || hostname.endsWith('.pages.dev');
+    return (
+      hostname === 'pages.dev' ||
+      hostname.endsWith('.pages.dev') ||
+      hostname.endsWith('.workers.dev')
+    );
   } catch {
     return false;
   }

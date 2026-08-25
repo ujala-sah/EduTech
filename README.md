@@ -194,20 +194,18 @@ To run both from the project root:
 npm run dev
 ```
 
-## Deploy on Cloudflare Pages
+## Deploy on Cloudflare
 
-The React app is a static Vite SPA and is what you deploy to Cloudflare. The Express + MongoDB API cannot run on Pages; host it on a Node service (Render, Railway, Fly.io, or a VPS) and point the frontend at it.
+The React app is a static Vite SPA. Cloudflare Workers serves those files from `client/dist` using `wrangler.jsonc`. The Express + MongoDB API cannot run on this Worker; host it on a Node service (Render, Railway, Fly.io, or a VPS) and point the frontend at it.
 
 Cloudflare dashboard settings when connecting this GitHub repo:
 
-- Framework preset: Vite
 - Build command: `npm run build`
-- Build output directory: `client/dist`
-- Root directory: leave empty (repo root)
+- Deploy command: `npx wrangler deploy`
 - Environment variable: `VITE_API_URL` = `https://your-api-host/api`
 - Node version: 20
 
-On the API host, set `CLIENT_URL` to your `https://*.pages.dev` (or custom) domain. Preview deployments on `*.pages.dev` are allowed automatically.
+On the API host, set `CLIENT_URL` to your `https://*.workers.dev` or `https://*.pages.dev` (or custom) domain. Preview deployments on `*.pages.dev` are allowed automatically.
 
 Local preview of the production frontend build:
 
