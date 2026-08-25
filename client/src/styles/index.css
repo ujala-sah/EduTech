@@ -799,8 +799,20 @@ th { background: var(--mint); font-size: 13px; color: var(--primary-dark); }
 .form-grid .full, .form-grid .primary-btn, .form-grid .accent-btn { grid-column: 1 / -1; }
 
 .notice-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.notice-list li { padding: 12px; border: 1px solid var(--border); border-radius: 0; display: flex; justify-content: space-between; gap: 12px; background: var(--white); }
+.notice-list li { padding: 12px; border: 1px solid var(--border); border-radius: 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--white); }
 .notice-list li.unread { background: var(--mint); }
+.mark-read-btn {
+  padding: 6.6px 12px;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 7px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  align-self: center;
+  width: auto;
+  min-height: 0;
+}
 
 .row-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 

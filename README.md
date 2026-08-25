@@ -156,6 +156,7 @@ PORT=5001
 MONGODB_URI=mongodb://127.0.0.1:27017/edutrack
 JWT_SECRET=replace_this_with_a_long_random_secret
 CLIENT_URL=http://localhost:5173
+CLIENT_URLS=https://your-frontend.pages.dev
 JWT_EXPIRES_IN=7d
 ```
 
@@ -164,6 +165,8 @@ Create `client/.env` from `client/.env.example`:
 ```text
 VITE_API_URL=/api
 ```
+
+For a Cloudflare Pages production build, set this to the public API origin, for example `https://your-api-host/api`.
 
 Port 5001 is used because macOS often occupies port 5000 with AirPlay Receiver.
 
@@ -189,6 +192,28 @@ To run both from the project root:
 
 ```bash
 npm run dev
+```
+
+## Deploy on Cloudflare Pages
+
+The React app is a static Vite SPA and is what you deploy to Cloudflare. The Express + MongoDB API cannot run on Pages; host it on a Node service (Render, Railway, Fly.io, or a VPS) and point the frontend at it.
+
+Cloudflare dashboard settings when connecting this GitHub repo:
+
+- Framework preset: Vite
+- Build command: `npm run build`
+- Build output directory: `client/dist`
+- Root directory: leave empty (repo root)
+- Environment variable: `VITE_API_URL` = `https://your-api-host/api`
+- Node version: 20
+
+On the API host, set `CLIENT_URL` to your `https://*.pages.dev` (or custom) domain. Preview deployments on `*.pages.dev` are allowed automatically.
+
+Local preview of the production frontend build:
+
+```bash
+npm run build
+cd client && npm run preview
 ```
 
 ## Seed demo data

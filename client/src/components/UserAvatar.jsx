@@ -1,3 +1,5 @@
+import { assetUrl } from '../services/api';
+
 const roleEmoji = {
   student: '🎓',
   teacher: '📚',
@@ -7,7 +9,7 @@ const roleEmoji = {
 function photoSrc(path) {
   if (!path) return '';
   if (path.startsWith('http') || path.startsWith('blob:') || path.startsWith('data:')) return path;
-  return path;
+  return assetUrl(path);
 }
 
 function UserAvatar({ user, size = 'md' }) {

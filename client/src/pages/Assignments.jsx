@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import api from '../services/api';
+import api, { assetUrl } from '../services/api';
 import Loading from '../components/Loading';
 import Modal from '../components/Modal';
 
@@ -164,7 +164,7 @@ function Assignments() {
                     </button>
                   )}
                   {item.attachment && (
-                    <a href={item.attachment} target="_blank" rel="noreferrer">
+                    <a href={assetUrl(item.attachment)} target="_blank" rel="noreferrer">
                       File
                     </a>
                   )}

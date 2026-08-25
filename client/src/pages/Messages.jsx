@@ -53,8 +53,8 @@ function Messages() {
                 <small>{new Date(item.createdAt).toLocaleString()}</small>
               </div>
               {!item.isRead && (
-                <button type="button" onClick={() => markRead(item._id)}>
-                  Mark read
+                <button type="button" className="mark-read-btn" onClick={() => markRead(item._id)}>
+                  Mark as read
                 </button>
               )}
             </li>

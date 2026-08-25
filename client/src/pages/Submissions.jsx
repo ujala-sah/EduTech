@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import api from '../services/api';
+import api, { assetUrl } from '../services/api';
 import Loading from '../components/Loading';
 import Modal from '../components/Modal';
 
@@ -67,7 +67,7 @@ function Submissions() {
                 <td>{new Date(item.submittedAt).toLocaleString()}</td>
                 <td>{item.marks ?? 'Not graded'}</td>
                 <td>
-                  <a href={item.file} target="_blank" rel="noreferrer">
+                  <a href={assetUrl(item.file)} target="_blank" rel="noreferrer">
                     Download
                   </a>
                   <button

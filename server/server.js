@@ -25,13 +25,37 @@ const PORT = process.env.PORT || 5001;
 
 connectDB();
 
-app.use(
-  cors({
-    origin: [
+const extraOrigins = (process.env.CLIENT_URLS || '')
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean);
+
+function isAllowedOrigin(origin) {
+  const allowlist = new Set(
+    [
       process.env.CLIENT_URL,
       'http://localhost:5173',
       'http://127.0.0.1:5173',
-    ].filter(Boolean),
+      ...extraOrigins,
+    ].filter(Boolean)
+  );
+  if (allowlist.has(origin)) return true;
+  try {
+    const { hostname } = new URL(origin);
+    return hostname === 'pages.dev' || hostname.endsWith('.pages.dev');
+  } catch {
+    return false;
+  }
+}
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || isAllowedOrigin(origin)) {
+        return callback(null, true);
+      }
+      return callback(null, false);
+    },
   })
 );
 app.use(express.json());

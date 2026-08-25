@@ -376,6 +376,22 @@
   border-radius: 14px;
   background: rgba(247, 252, 250, 0.7);
   border: 1px solid rgba(16, 52, 44, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.mark-read-btn {
+  padding: 6.6px 12px;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 7px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  align-self: center;
+  width: auto;
+  min-height: 0;
 }
 
 table {

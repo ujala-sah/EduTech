@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import api from '../services/api';
+import api, { assetUrl } from '../services/api';
 import Loading from '../components/Loading';
 import Modal from '../components/Modal';
 
@@ -119,7 +119,7 @@ function Resources() {
                 {item.course?.name} · {new Date(item.createdAt).toLocaleDateString()}
               </p>
               <div className="row-actions">
-                <a className="primary-btn" href={item.file} target="_blank" rel="noreferrer">
+                <a className="primary-btn" href={assetUrl(item.file)} target="_blank" rel="noreferrer">
                   Download
                 </a>
                 {user.role !== 'student' && (
